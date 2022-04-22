@@ -10,7 +10,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
-@WebServlet(urlPatterns={"/*"})
+@WebServlet(urlPatterns={"/"})
 public final class JokeController extends HttpServlet {
 
 	private static final List<String> jokes = Arrays.asList(
