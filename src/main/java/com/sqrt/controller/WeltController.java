@@ -15,18 +15,21 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.Writer;
 
 @WebServlet(urlPatterns={"/welt"})
-public final class RssController extends HttpServlet {
+public final class WeltController extends HttpServlet {
 
 	@Override
 	protected void doGet(final HttpServletRequest request, final HttpServletResponse response) throws ServletException, java.io.IOException {
+		response.setHeader("Access-Control-Allow-Origin", "*");
+		response.setContentType("application/rss+xml");
 
 		try (CloseableHttpClient httpClient = HttpClients.createDefault()) {
-			HttpGet rssReq = new HttpGet("https://www.welt.de/feeds/latest.rss");
+			final HttpGet rssReq = new HttpGet("https://www.welt.de/feeds/latest.rss");
 
 			try (CloseableHttpResponse rssResp = httpClient.execute(rssReq)) {
-				HttpEntity entity = rssResp.getEntity();
+				final HttpEntity entity = rssResp.getEntity();
+
 				if (entity != null) {
-					String result = EntityUtils.toString(entity);
+					final String result = EntityUtils.toString(entity);
 
 					final Writer writer = response.getWriter();
 					writer.write(result);
