@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.Writer;
+import java.nio.charset.StandardCharsets;
 
 @WebServlet(urlPatterns={"/welt"})
 public final class WeltController extends HttpServlet {
@@ -21,6 +22,7 @@ public final class WeltController extends HttpServlet {
 	protected void doGet(final HttpServletRequest request, final HttpServletResponse response) throws ServletException, java.io.IOException {
 		response.setHeader("Access-Control-Allow-Origin", "*");
 		response.setContentType("application/rss+xml");
+		response.setCharacterEncoding(StandardCharsets.UTF_8.toString());
 
 		try (CloseableHttpClient httpClient = HttpClients.createDefault()) {
 			final HttpGet rssReq = new HttpGet("https://www.welt.de/feeds/latest.rss");
