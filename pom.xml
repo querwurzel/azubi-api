@@ -4,7 +4,7 @@
 
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.sqrt</groupId>
-	<artifactId>jokes</artifactId>
+	<artifactId>azubi-api</artifactId>
 	<packaging>war</packaging>
 	<version>1</version>
 
@@ -30,7 +30,7 @@
 	</dependencies>
 	
 	<build>
-		<finalName>${project.artifactId}##${project.version}</finalName>
+		<finalName>${project.artifactId}</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
